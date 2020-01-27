@@ -19,7 +19,7 @@ public class UserGenerator {
 	    put(4, "Ivanov");
 	    put(5, "Atanasov");
   }
-	private final HashMap<Integer, String> hNamesMale = new HashMap<Integer, String>(){
+	private final HashMap<Integer, String> hNamesFemale = new HashMap<Integer, String>(){
 		put(0, "Ivana");
 		put(1, "Petya");
 		put(2, "Gergana");
@@ -27,7 +27,7 @@ public class UserGenerator {
 		put(4, "Naska");
 		put(5, "Aleksandra");
   }
-private final HashMap<Integer, String> hFamiliesMale = new HashMap<Integer, String>(){
+private final HashMap<Integer, String> hFamiliesFemale = new HashMap<Integer, String>(){
 	    put(0, "Georgieva");
 	    put(1, "Petrova");
 	    put(2, "Vasileva");
