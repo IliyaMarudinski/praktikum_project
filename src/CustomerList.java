@@ -41,10 +41,12 @@ public class CustomerList {
 		String  year       = "";
 		Integer totalCount = 0;
 		for(Customer i: list) {
-			year = i.getRegDate().substring(6);
-			totalCount = tMap.get(year);
-			totalCount++;
-			tMap.put(year, totalCount);
+			if(i.getUserRate() == showRate) {
+				year = i.getRegDate().substring(6);
+				totalCount = tMap.get(year);
+				totalCount++;
+				tMap.put(year, totalCount);				
+			}
 		}
 		for(Map.Entry<String,Integer> entry : tMap.entrySet() ) {
 			StringBuilder strBuild = new StringBuilder();
