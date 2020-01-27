@@ -5,8 +5,7 @@ public class MainClass {
 		// TODO Auto-generated method stub
 		System.out.println("This is the star point of the main class");
 		System.out.println("This is the star point of the main class");
-				
-
+		System.out.println("This is the star point of the main class");			
 	}
 
 }
