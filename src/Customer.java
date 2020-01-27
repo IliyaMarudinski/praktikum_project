@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class Customer {
 
@@ -13,7 +14,8 @@ public class Customer {
 		this.regDate = regDate;
 		this.orderCount = ordercount;
 		this.totalSumSpent = totalSumSpent;
-		this.userRate = 0;
+		this.userRate = 0;	
+		calcRating();
 	}
 
 	public String getName() {
@@ -37,7 +39,7 @@ public class Customer {
 	}
 
 	public void setOrderCount(int ordercount) {
-		this.orderCount = ordercount; 
+		this.orderCount = ordercount;
 		calcRating();
 	}
 
@@ -58,13 +60,50 @@ public class Customer {
 		}
 	
 	private void calcRating() {
-		if(isBetween(this.orderCount, 1, 99))     this.userRate = 1; 
+		if(isBetween(this.orderCount, 1,   99))   this.userRate = 1; 
 		if(isBetween(this.orderCount, 100, 299))  this.userRate = 2; 
 		if(isBetween(this.orderCount, 300, 499))  this.userRate = 3; 
 		if(isBetween(this.orderCount, 500, 999))  this.userRate = 4; 
 		if(isBetween(this.orderCount, 1000,9999)) this.userRate = 5; 
 	}
 	
+	public void print() {
+		StringBuilder strBuild = new StringBuilder();
+		strBuild.append(this.name);
+		strBuild.append(", ");
+		strBuild.append(this.orderCount);
+		strBuild.append(", ");	
+		strBuild.append(this.totalSumSpent);
+		strBuild.append(", ");
+		strBuild.append(this.regDate);
+		strBuild.append(", ");
+		strBuild.append(getRatingStr());
+		System.out.println(strBuild.toString());
+	}
 	
+	public String toString() {
+		StringBuilder strBuild = new StringBuilder();
+		strBuild.append(this.name);
+		strBuild.append(", ");
+		strBuild.append(this.orderCount);
+		strBuild.append(", ");	
+		strBuild.append(this.totalSumSpent);
+		strBuild.append(", ");
+		strBuild.append(this.regDate);
+		strBuild.append(", ");
+		strBuild.append(getRatingStr());
+		return strBuild.toString();		
+	}
 	
+	private String getRatingStr() {
+		switch (this.userRate){
+			case 0:  return "The customer has 0 orders";
+			case 1:  return "*";
+			case 2:  return "**";
+			case 3:  return "***";
+			case 4:  return "****";
+			case 5:  return "*****";
+			default: return "Error with customer rating";
+		}
+	}
 }
