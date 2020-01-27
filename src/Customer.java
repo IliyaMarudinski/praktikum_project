@@ -85,7 +85,7 @@ public class Customer {
 	}
 	
 	public String toString() {
-		StringBuilder strBuild = new StringBuilder();
+		StringBuilder strBuild = new StringBuilder(); 
 		strBuild.append(this.name);
 		strBuild.append(", ");
 		strBuild.append(this.orderCount);
