@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Customer {
@@ -7,6 +8,8 @@ public class Customer {
 	private int    orderCount; // 1:9999
 	private double totalSumSpent; 
 	private int    userRate;   // 1:5 stars(* ** *** **** *****)
+	
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 	
 	public Customer(String name, String regDate, int ordercount, double totalSumSpent) {
 		super();
@@ -73,7 +76,7 @@ public class Customer {
 		strBuild.append(", ");
 		strBuild.append(this.orderCount);
 		strBuild.append(", ");	
-		strBuild.append(this.totalSumSpent);
+		strBuild.append(df2.format(this.totalSumSpent));
 		strBuild.append(", ");
 		strBuild.append(this.regDate);
 		strBuild.append(", ");
@@ -87,7 +90,7 @@ public class Customer {
 		strBuild.append(", ");
 		strBuild.append(this.orderCount);
 		strBuild.append(", ");	
-		strBuild.append(this.totalSumSpent);
+		strBuild.append(df2.format(this.totalSumSpent));
 		strBuild.append(", ");
 		strBuild.append(this.regDate);
 		strBuild.append(", ");

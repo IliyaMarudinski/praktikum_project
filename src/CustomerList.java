@@ -15,6 +15,9 @@ public class CustomerList {
 			i.print();
 		}
 	}	
+	public void addCustomer(Customer addCust) {
+		this.list.add(addCust);
+	}
 	public void sortByNamePrint(boolean filterRating, int Rating) {
 		ArrayList<Customer> tmp_list = new ArrayList<Customer>();
 		for(Customer i:list) {
@@ -38,14 +41,17 @@ public class CustomerList {
 	}	
 	public void showCustCountPerYearByRate(int showRate) {
 		TreeMap<String, Integer> tMap = new TreeMap<String, Integer>();
-		String  year       = "";
-		Integer totalCount = 0;
 		for(Customer i: list) {
 			if(i.getUserRate() == showRate) {
-				year = i.getRegDate().substring(6);
-				totalCount = tMap.get(year);
-				totalCount++;
-				tMap.put(year, totalCount);				
+				String  year = i.getRegDate().substring(6);
+				if(tMap.containsKey(year)) {
+					Integer tmp_int = new Integer(tMap.get(year));
+					tmp_int = tmp_int + 1;
+					tMap.put(year, tmp_int);					
+				}
+				else {
+					tMap.put(year, 1);
+				}
 			}
 		}
 		for(Map.Entry<String,Integer> entry : tMap.entrySet() ) {
