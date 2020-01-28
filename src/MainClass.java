@@ -25,7 +25,7 @@ public class MainClass {
 		custList.printAll();
 		System.out.println("\n\nTASK 2: Sort by name and print");
 		custList.sortByNamePrint(false, 0);
-		System.out.println("\n\nTASK 3: Filter 2 rate users sort by Time Spent and print");
+		System.out.println("\n\nTASK 3: Filter ** users sort by Money Spent and print");
 		custList.sortByNamePrint(true, 2);
 		System.out.println("\n\nTASK 4: Show register users per year");
 		custList.showCustCountPerYearByRate(2);
