@@ -4,20 +4,20 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int UserCount = 0;
+		int userCount = 0;
+		int userRate  = 0;
 		Scanner scan = new Scanner(System.in);
 		CustomerList custList = new CustomerList();
 		System.out.println(" ---------------------- This is the start point of the main class ---------------------- ");
-		while(UserCount < 1 || UserCount > 5000) {
+		while(userCount < 1 || userCount > 5000) {
 			System.out.print("TASK 1: Input user count beetwen 1 and 5000: ");
 			if(scan.hasNextInt()) {
-				UserCount = scan.nextInt();
+				userCount = scan.nextInt();
 			}
 			scan.nextLine();
 		}
-		scan.close();
 
-		for(int i = 0; i < UserCount; i++) {
+		for(int i = 0; i < userCount; i++) {
 			custList.addCustomer(UserGenerator.genUser());			
 		}
 		
@@ -27,7 +27,17 @@ public class MainClass {
 		custList.sortByNamePrint(false, 0);
 		System.out.println("\n\nTASK 3: Filter ** users sort by Money Spent and print");
 		custList.sortByNamePrint(true, 2);
-		System.out.println("\n\nTASK 4: Show register users per year");
+		System.out.println("\n\n");
+		
+		while(userRate < 1 || userRate > 5 ){
+			System.out.print("TASK 4: Show register users per year, select rating(1-5):");
+			if(scan.hasNextInt()) {
+				userRate = scan.nextInt();
+			}
+			scan.nextLine();
+		}
+		scan.close();		
+		
 		custList.showCustCountPerYearByRate(2);
 	}
 }
