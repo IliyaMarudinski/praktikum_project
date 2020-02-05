@@ -6,6 +6,8 @@ public class MainClass {
 		// TODO Auto-generated method stub
 		int userCount = 0;
 		int userRate  = 0;
+		boolean autoGen;
+		String answer;
 		Scanner scan = new Scanner(System.in);
 		CustomerList custList = new CustomerList();
 		System.out.println(" ---------------------- This is the start point of the main class ---------------------- ");
@@ -16,9 +18,28 @@ public class MainClass {
 			}
 			scan.nextLine();
 		}
-
+		System.out.print("TASK 1: Do you want to generate the customers automaticly(y/n): ");		
+		while (true) {
+			  answer = scan.nextLine().trim().toLowerCase();
+			  if (answer.equals("y")) {
+				autoGen = true;
+			    break;
+			  } else if (answer.equals("n")) {
+				autoGen = false;
+			    break;
+			  } else {
+			     System.out.print("Sorry, I didn't catch that. Please answer y/n: ");
+			  }
+			}
+		
 		for(int i = 0; i < userCount; i++) {
-			custList.addCustomer(UserGenerator.genUser());			
+			if(autoGen) {
+			  custList.addCustomer(UserGenerator.genUser());
+			}
+			else {
+			  System.out.print("-----\nPlease fill the information for customer - "  + (i+1) + "\n-----\n");
+			  custList.addCustomerManual();
+			}
 		}
 		
 		System.out.println("\n\n---------------------- List all users ---------------------- ");	
@@ -37,6 +58,8 @@ public class MainClass {
 			scan.nextLine();
 		}
 		scan.close();		
+		
+		System.out.println("\n\n---------------------- List the count of register users per year with rating " + userRate + " ---------------------- ");	
 		
 		custList.showCustCountPerYearByRate(userRate);
 	}

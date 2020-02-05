@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 import java.lang.Double;
+import java.text.ParseException;
 
 public class CustomerList {
 	
@@ -18,6 +20,52 @@ public class CustomerList {
 	public void addCustomer(Customer addCust) {
 		this.list.add(addCust);
 	}
+	
+	public void addCustomerManual() {
+		Scanner scanLn     = new Scanner(System.in);
+		String  name       = new String();
+		String  dataStr    = new String();
+		int     orderC     = -1;
+		double  totalSpend = -0.1;
+		
+		System.out.print("Please type the Name of the customer(between 5 and 40 symbols): ");
+		name = scanLn.nextLine();
+		while(name.length() > 40 || name.length() < 5) {
+			System.out.print("ERROR in the length of the name please type it again(between 5 and 40 symbols): ");
+			name = scanLn.nextLine();
+		}	
+
+		System.out.print("Please type the register date of the customer(format dd.MM.yyyy): ");
+		dataStr = scanLn.nextLine();
+			while(!checkDatePattern(dataStr)) {
+				System.out.print("ERROR in the register date type it again(format dd.MM.yyyy): ");
+				dataStr = scanLn.nextLine();
+			}	
+				
+		System.out.print("Please type the order count of the customer (between 0 and 9999):  ");
+		if(scanLn.hasNextInt()) orderC = scanLn.nextInt();
+		scanLn.nextLine();
+		while(orderC < 0 || orderC > 9999) {
+			System.out.print("ERROR in the order count, please type it again(between 0 and 9999): ");
+			if(scanLn.hasNextInt()) {
+				orderC = scanLn.nextInt();
+			}
+			scanLn.nextLine();
+		}
+		
+		System.out.print("Please type customer total spend amount (more than 0):  ");
+		if(scanLn.hasNextDouble()) totalSpend = scanLn.nextDouble();
+		scanLn.nextLine();
+		while(totalSpend < 0.0 ) {
+			System.out.print("ERROR in the order count, please type it again(between 0 and 9999): ");
+			if(scanLn.hasNextDouble()) {
+				totalSpend = scanLn.nextDouble();
+			}
+			scanLn.nextLine();
+		}	
+		this.list.add(new Customer(name, dataStr, orderC, totalSpend));
+	}	
+	
 	public void sortByNamePrint(boolean filterRating, int Rating) {
 		ArrayList<Customer> tmp_list = new ArrayList<Customer>();
 		for(Customer i:list) {
@@ -63,5 +111,13 @@ public class CustomerList {
 			strBuild.append(value);
 			System.out.println(strBuild.toString());			
 		}		
+	}
+	public static boolean checkDatePattern(String data) {
+	    try {
+	        Customer.dateFormat.parse(data);
+	        return true;
+	    } catch (ParseException e) {
+	        return false;
+	    }
 	}
 }

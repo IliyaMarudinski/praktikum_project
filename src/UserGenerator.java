@@ -53,15 +53,14 @@ private final static HashMap<Integer, String> hFamiliesFemale = new HashMap<Inte
 		}
 		int orderC = rand.nextInt(150)+1;
 		double totalSpend = rand.nextDouble()*1000;		
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 		Date date = null;
 		try {
-		    date = between(dateFormat.parse("31.12.2000"), dateFormat.parse("31.12.2019"));
+		    date = between(Customer.dateFormat.parse("31.12.2000"), Customer.dateFormat.parse("31.12.2019"));
 		} catch (Exception e) {
 		// TODO: handle exception
 			e.printStackTrace(); 
 		}
-		String dataStr = dateFormat.format(date);
+		String dataStr = Customer.dateFormat.format(date);
 		return new Customer(name, dataStr, orderC, totalSpend);
 	}
 	  public static Date between(Date start, Date end) {

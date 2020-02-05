@@ -1,5 +1,6 @@
+import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Customer {
 
@@ -10,6 +11,8 @@ public class Customer {
 	private int    userRate;   // 1:5 stars(* ** *** **** *****)
 	
     private static DecimalFormat df2 = new DecimalFormat("#.##");
+    
+	public final static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 	
 	public Customer(String name, String regDate, int ordercount, double totalSumSpent) {
 		super();
@@ -98,7 +101,7 @@ public class Customer {
 		return strBuild.toString();		
 	}
 	
-	private String getRatingStr() {
+	public  String getRatingStr() {
 		switch (this.userRate){
 			case 0:  return "The customer has 0 orders";
 			case 1:  return "*";
