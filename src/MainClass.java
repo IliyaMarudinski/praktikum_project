@@ -38,6 +38,6 @@ public class MainClass {
 		}
 		scan.close();		
 		
-		custList.showCustCountPerYearByRate(2);
+		custList.showCustCountPerYearByRate(userRate);
 	}
 }
