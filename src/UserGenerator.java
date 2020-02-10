@@ -51,7 +51,7 @@ private final static HashMap<Integer, String> hFamiliesFemale = new HashMap<Inte
 			name = hNamesFemale.get(rand.nextInt(hNamesFemale.size()));
 			name = name + " " + hFamiliesFemale.get(rand.nextInt(hFamiliesFemale.size()));
 		}
-		int orderC = rand.nextInt(150)+1;
+		int orderC = rand.nextInt(9999)+1;
 		double totalSpend = rand.nextDouble()*1000;		
 		Date date = null;
 		try {

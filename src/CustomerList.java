@@ -113,8 +113,28 @@ public class CustomerList {
 		}		
 	}
 	public static boolean checkDatePattern(String data) {
+		if(!data.matches("\\d\\d\\.\\d\\d\\.\\d\\d\\d\\d")) {
+//			System.out.println("Checkoint 0");
+			return false;
+		}
+		String[] sepStr = data.split("\\.");
+		int      day    = Integer.parseInt(sepStr[0]);
+		int      mount  = Integer.parseInt(sepStr[1]);
+		int      year   = Integer.parseInt(sepStr[2]);
 	    try {
 	        Customer.dateFormat.parse(data);
+	        if(day   < 1 || day > 31) {
+//				System.out.println("Checkoint 1");
+	        	return false;
+	        }
+	        if(mount < 1 || mount > 12) {
+//				System.out.println("Checkoint 2");
+	        	return false;
+	        }
+	        if(year  < 1900) {
+//				System.out.println("Checkoint 3");
+	        	return false;
+	        }        
 	        return true;
 	    } catch (ParseException e) {
 	        return false;
